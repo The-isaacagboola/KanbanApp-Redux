@@ -9,7 +9,9 @@ const column = [
 
 export default function Project() {
   return (
-    <section className={`md:ml-10 grid grid-cols-${column.length} max-w-[90%]`}>
+    <section
+      className={`md:ml-10 mt-3 grid grid-cols-${column.length} w-full gap-3`}
+    >
       {column.map((col) => (
         <Column key={col.title} col={col} />
       ))}

@@ -1,20 +1,21 @@
 import { teamData } from "../assets/data";
+import stack from "../assets/stack.png";
 const tools = [
   {
     tool: "React",
-    image: "",
+    image: stack,
   },
   {
     tool: "Tailwind",
-    image: "",
+    image: stack,
   },
   {
     tool: "Redux",
-    image: "",
+    image: stack,
   },
   {
     tool: "TypeScript",
-    image: "",
+    image: stack,
   },
 ];
 export default function SideBar() {
@@ -27,7 +28,7 @@ export default function SideBar() {
         {tools.map((tool, i) => (
           <div className="px-2 flex gap-3 items-center" key={i}>
             <img className="w-5 h-5" src={tool.image} alt="tool image" />
-            <p>{tool.tool}</p>
+            <p className="uppercase font-medium">{tool.tool}</p>
           </div>
         ))}
       </div>
