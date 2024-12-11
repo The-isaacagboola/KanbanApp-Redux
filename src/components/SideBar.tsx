@@ -35,7 +35,10 @@ export default function SideBar() {
 
       <h2 className="mb-3 mt-6 font-semibold">THE TEAM</h2>
 
-      <div className="flex flex-col gap-2">
+      <div
+        className="flex flex-col gap-2 mb-5
+      "
+      >
         {teamData.map((mate) => (
           <div
             className="rounded-lg cursor-pointer py-3 px-2 flex gap-3 items-center bg-navAcc"

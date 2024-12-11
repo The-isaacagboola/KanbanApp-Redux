@@ -1,22 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
+type taskItem = { title: string; category: "backlog" | "done" | "in progress" };
+
+type storeState = { projects: taskItem[]; columns: string[] };
+
+const initialState: storeState = {
   projects: [
-    { task: "Design the custom Bible App", category: "backlog" },
-    { task: "Complete Front End MAsters course on Redux", category: "done" },
-    { task: "Prepare the arrangement for carol", category: "done" },
+    { title: "Design the custom Bible App", category: "backlog" },
+    { title: "Complete Front End MAsters course on Redux", category: "done" },
+    { title: "Prepare the arrangement for carol", category: "done" },
     {
-      task: "Understanding Redux Deeply",
-      category: "progress",
+      title: "Understanding Redux Deeply",
+      category: "in progress",
     },
-    { task: "Finish the N.T in a month", category: "backlog" },
+    { title: "Finish the N.T in a month", category: "backlog" },
   ],
+
+  columns: ["backlog", "in progress", "done"],
 };
 
 const projectSlice = createSlice({
   name: "project-slice",
   initialState,
-  reducers: {},
+  reducers: {
+    addTask: (state, action: PayloadAction<taskItem>) => {
+      return { ...state, action };
+    },
+  },
 });
 
+export const { addTask } = projectSlice.actions;
 export default projectSlice.reducer;

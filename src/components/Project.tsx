@@ -1,19 +1,14 @@
+import { useSelector } from "react-redux";
 import Column from "./Column";
-
-const column = [
-  { title: "Backlog" },
-  { title: "Design" },
-  { title: "In Progress" },
-  { title: "Done" },
-];
+import { RootState } from "../store/store";
 
 export default function Project() {
+  const columns = useSelector((state: RootState) => state.projectStore.columns);
+
   return (
-    <section
-      className={`md:ml-10 mt-3 grid grid-cols-${column.length} w-full gap-3`}
-    >
-      {column.map((col) => (
-        <Column key={col.title} col={col} />
+    <section className={`md:ml-10 mt-3 grid grid-cols-3 gap-3`}>
+      {columns.map((col) => (
+        <Column key={col} title={col} />
       ))}
     </section>
   );
