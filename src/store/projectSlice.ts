@@ -1,33 +1,42 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type taskItem = { title: string; category: "backlog" | "done" | "in progress" };
+export type Category = "todo" | "done" | "in progress";
+type taskItem = { title: string; category: Category };
 
-type storeState = { projects: taskItem[]; columns: string[] };
+type storeState = {
+  draggedTask: string | null;
+  projects: taskItem[];
+  columns: Category[];
+};
 
 const initialState: storeState = {
+  draggedTask: null,
   projects: [
-    { title: "Design the custom Bible App", category: "backlog" },
+    { title: "Design the custom Bible App", category: "todo" },
     { title: "Complete Front End MAsters course on Redux", category: "done" },
     { title: "Prepare the arrangement for carol", category: "done" },
     {
       title: "Understanding Redux Deeply",
       category: "in progress",
     },
-    { title: "Finish the N.T in a month", category: "backlog" },
+    { title: "Finish the N.T in a month", category: "todo" },
   ],
 
-  columns: ["backlog", "in progress", "done"],
+  columns: ["todo", "in progress", "done"],
 };
 
 const projectSlice = createSlice({
-  name: "project-slice",
+  name: "projectSlice",
   initialState,
   reducers: {
     addTask: (state, action: PayloadAction<taskItem>) => {
-      return { ...state, action };
+      state.projects.push(action.payload);
+    },
+    setDragged: (state, action: PayloadAction<string>) => {
+      state.draggedTask = action.payload;
     },
   },
 });
 
-export const { addTask } = projectSlice.actions;
+export const { addTask, setDragged } = projectSlice.actions;
 export default projectSlice.reducer;
