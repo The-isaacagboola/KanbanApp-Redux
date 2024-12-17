@@ -21,27 +21,24 @@ const tools = [
 export default function SideBar() {
   return (
     <section>
-      <h1 className="text-[40px] mb-4 font-semibold">THE KANBAN PROJECT</h1>
+      <h1 className="text-[45px] mb-4 font-semibold">KANBAN - REDUX APP</h1>
 
-      <h2 className="mb-3 mt-6 font-semibold">TOOLS USED</h2>
+      <h2 className="mt-6 mb-3 font-semibold">TOOLS USED</h2>
       <div className="flex flex-col gap-2">
         {tools.map((tool, i) => (
-          <div className="px-2 flex gap-3 items-center" key={i}>
+          <div className="flex items-center gap-3 px-2" key={i}>
             <img className="w-5 h-5" src={tool.image} alt="tool image" />
-            <p className="uppercase font-medium">{tool.tool}</p>
+            <p className="font-medium uppercase">{tool.tool}</p>
           </div>
         ))}
       </div>
 
-      <h2 className="mb-3 mt-6 font-semibold">THE TEAM</h2>
+      <h2 className="mt-6 mb-3 font-semibold">THE TEAM</h2>
 
-      <div
-        className="flex flex-col gap-2 mb-5
-      "
-      >
+      <div className="flex flex-col gap-2 mb-5 ">
         {teamData.map((mate) => (
           <div
-            className="rounded-lg cursor-pointer py-3 px-2 flex gap-3 items-center bg-navAcc"
+            className="flex items-center gap-3 px-2 py-3 rounded-lg cursor-pointer bg-navAcc"
             key={mate.id}
           >
             <img
