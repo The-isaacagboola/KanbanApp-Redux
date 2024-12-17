@@ -20,20 +20,22 @@ export default function ProjectItem({ title }: Props) {
 
   const textColor = item?.category ? colors[item?.category] : undefined;
 
+  const handleDrag = () => {
+    dispatch(setDragged(title));
+    console.log("dragging start");
+  };
+
   return (
     <div
       draggable
-      onDragStart={() => {
-        dispatch(setDragged(title));
-        console.log("dragging start");
-      }}
+      onDragStart={handleDrag}
       className="p-2 text-black rounded-lg cursor-move bg-navAcc"
     >
       <h1 className="text-xl font-semibold ">{title}</h1>
 
       <div className="flex gap-2">
         <h2> Added: </h2>
-        <p>12th May, 2024</p>
+        {item?.added ? <p>{new Date(item?.added).toDateString()}</p> : null}
       </div>
       <div className="flex gap-2">
         <h2> Status: </h2>
@@ -47,7 +49,7 @@ export default function ProjectItem({ title }: Props) {
         </p>
       </div>
       <button
-        className="p-1 mt-2 font-bold text-white bg-[#df0303] rounded-md"
+        className="py-1 px-3 mt-2 font-bold text-white bg-[#df0303] rounded-md"
         onClick={() => {
           dispatch(deleteTask(title));
         }}

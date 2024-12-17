@@ -21,19 +21,16 @@ export default function Column({ title }: ColumnProp) {
     return projects.filter((item) => item.category === title);
   }, [projects, title]);
 
-  console.log(isOpen);
   return (
     <>
       <div
-        onDrag={(e) => {
+        onDragOver={(e) => {
           e.preventDefault();
         }}
-        onDrop={() => {
-          console.log("Dropped");
-        }}
-        className="p-3 text-white rounded-lg bg-teal"
+        onDrop={() => {}}
+        className="p-3 text-white transition-all rounded-lg bg-teal max-h-fit"
       >
-        <h1 className="text-lg text-center uppercase">{title}</h1>
+        <h1 className="mb-3 text-lg text-center uppercase">{title}</h1>
         <div className="space-y-2">
           {tasks.map((item, i) => (
             <ProjectItem key={i} title={item.title} />
@@ -50,7 +47,7 @@ export default function Column({ title }: ColumnProp) {
         </div>
       </div>
 
-      {isOpen && <AddTaskModal closeModal={closeModal} />}
+      {isOpen && <AddTaskModal closeModal={closeModal} cat={title} />}
     </>
   );
 }

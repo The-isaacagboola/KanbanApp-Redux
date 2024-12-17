@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type Category = "todo" | "done" | "in progress";
-type taskItem = { title: string; category: Category };
+export type taskItem = { title: string; category: Category; added: number };
 
 type storeState = {
   draggedTask: string | undefined;
@@ -12,14 +12,31 @@ type storeState = {
 const initialState: storeState = {
   draggedTask: "Howfar i am available",
   projects: [
-    { title: "Design the custom Bible App", category: "todo" },
-    { title: "Complete Front End MAsters course on Redux", category: "done" },
-    { title: "Prepare the arrangement for carol", category: "done" },
+    {
+      title: "Design the custom Bible App",
+      category: "todo",
+      added: 1734444378234,
+    },
+    {
+      title: "Complete Front End MAsters course on Redux",
+      category: "done",
+      added: 1734444369034,
+    },
+    {
+      title: "Prepare the arrangement for carol",
+      category: "done",
+      added: 1734444339034,
+    },
     {
       title: "Understanding Redux Deeply",
       category: "in progress",
+      added: 1734444289034,
     },
-    { title: "Finish the N.T in a month", category: "todo" },
+    {
+      title: "Finish the N.T in a month",
+      category: "todo",
+      added: 1734444319034,
+    },
   ],
 
   columns: ["todo", "in progress", "done"],

@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="w-full max-w-[1920px] ">
       <NavBar />
-      <div className="px-[20px] grid grid-cols-1 md:grid-cols-[300px_1fr] mt-8">
+      <div className="px-[20px] grid grid-cols-1 md:grid-cols-[300px_1fr] my-8">
         <SideBar />
         <Project />
       </div>
