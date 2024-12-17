@@ -1,29 +1,31 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
-import { setDragged } from "../store/projectSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store/store";
+import { deleteTask, setDragged } from "../store/projectSlice";
+
 type Props = {
   title: string;
 };
 
 const colors = {
-  todo: "#9eb61a7c",
+  todo: "#2e36007d",
   "in progress": "#fe02027c",
-  done: "#1ba1397c",
+  done: "#0050127c",
 };
+
 export default function ProjectItem({ title }: Props) {
   const item = useSelector((store: RootState) =>
     store.projectStore.projects.find((task) => task.title === title)
   );
-  const dragged = useSelector(
-    (store: RootState) => store.projectStore.draggedTask
-  );
+  const dispatch = useDispatch<AppDispatch>();
+
   const textColor = item?.category ? colors[item?.category] : undefined;
+
   return (
     <div
       draggable
-      onDrag={() => {
-        setDragged(title);
-        console.log(dragged);
+      onDragStart={() => {
+        dispatch(setDragged(title));
+        console.log("dragging start");
       }}
       className="p-2 text-black rounded-lg cursor-move bg-navAcc"
     >
@@ -44,6 +46,14 @@ export default function ProjectItem({ title }: Props) {
           {item?.category}
         </p>
       </div>
+      <button
+        className="p-1 mt-2 font-bold text-white bg-[#df0303] rounded-md"
+        onClick={() => {
+          dispatch(deleteTask(title));
+        }}
+      >
+        Delete Task
+      </button>
     </div>
   );
 }

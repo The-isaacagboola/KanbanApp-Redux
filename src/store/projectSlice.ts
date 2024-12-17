@@ -4,13 +4,13 @@ export type Category = "todo" | "done" | "in progress";
 type taskItem = { title: string; category: Category };
 
 type storeState = {
-  draggedTask: string | null;
+  draggedTask: string | undefined;
   projects: taskItem[];
   columns: Category[];
 };
 
 const initialState: storeState = {
-  draggedTask: null,
+  draggedTask: "Howfar i am available",
   projects: [
     { title: "Design the custom Bible App", category: "todo" },
     { title: "Complete Front End MAsters course on Redux", category: "done" },
@@ -35,8 +35,20 @@ const projectSlice = createSlice({
     setDragged: (state, action: PayloadAction<string>) => {
       state.draggedTask = action.payload;
     },
+    deleteTask: (state, action: PayloadAction<string>) => {
+      state.projects = state.projects.filter(
+        (item) => item.title !== action.payload
+      );
+    },
   },
 });
 
-export const { addTask, setDragged } = projectSlice.actions;
+export const { addTask, setDragged, deleteTask } = projectSlice.actions;
 export default projectSlice.reducer;
+
+/**
+ {
+type: 'projectSlice/setDragged',
+  payload : 'First Fix'
+} 
+ */
