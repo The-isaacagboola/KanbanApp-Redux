@@ -32,7 +32,6 @@ export default function Column({ title }: ColumnProp) {
           setHover(true);
         }}
         onDrop={() => {
-          console.log(title);
           dispatch(moveTask(title));
           setHover(false);
         }}

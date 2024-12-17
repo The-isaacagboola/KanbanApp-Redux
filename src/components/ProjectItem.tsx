@@ -22,7 +22,6 @@ export default function ProjectItem({ title }: Props) {
 
   const handleDrag = () => {
     dispatch(setDragged(title));
-    console.log("dragging start");
   };
 
   return (
