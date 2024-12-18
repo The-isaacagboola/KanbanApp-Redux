@@ -13,7 +13,7 @@ const initialState: storeState = {
   draggedTask: "Howfar i am available",
   projects: [
     {
-      title: "Complete the idealization of the Custom Bible App",
+      title: "Complete the idealization of the Custom App",
       category: "todo",
       added: 1734444378234,
     },
@@ -23,7 +23,7 @@ const initialState: storeState = {
       added: 1734444378234,
     },
     {
-      title: "Build the Custom Bible App with React Native",
+      title: "Build the Custom App with React Native",
       category: "todo",
       added: 1734344378234,
     },

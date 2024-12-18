@@ -21,7 +21,9 @@ const tools = [
 export default function SideBar() {
   return (
     <section>
-      <h1 className="text-[45px] mb-4 font-semibold">KANBAN - REDUX APP</h1>
+      <h1 className="text-[45px] mb-4 font-semibold">
+        KANBAN - A SIMPLE REDUX APP
+      </h1>
 
       <h2 className="mt-6 mb-3 font-semibold">TOOLS USED</h2>
       <div className="flex flex-col gap-2">
